@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+   {% if title %}
+   <title>School MIS {{title}}</title>
+   {% else %}
+   <title>Flask App</title>
+   {% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/w3.css"><style>
+
+</style>
+<style>
+</style>
+</head>
+<body>
+
+
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+
+
+<div class="w3-sidebar w3-bar-block w3-border-right w3-pink w3-large w3-bar-block w3-animate-left" style="display:none;z-index:5;width: 250px" id="mySidebar" >
+
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+
+  <a href="/" class="w3-bar-item w3-button">Home</a>
+   {% if current_user.is_authenticated  %}
+   
+  <div class="w3-bar-item w3-button" onclick="myAccFunc()">
+  Books<i class="fa fa-caret-down"></i></div>
+  <div id="demoAcc" class="w3-hide w3-white w3-card-4">
+
+    <a href="/books" class="w3-bar-item w3-button">All Books</a>
+    {% if current_user.has_role('admin')  %}
+    <a href="/addbook" class="w3-bar-item w3-button">Add Book</a>
+    <a href="/addcategory" class="w3-bar-item w3-button">Add Category</a>
+    <a href="/categories" class="w3-bar-item w3-button">All Categories</a>
+     {% endif %}
+  </div>
+  
+
+  <div class="w3-bar-item w3-button" onclick="x()">
+  Customers<i class="fa fa-caret-down"></i></div>
+  <div id="y" class="w3-hide w3-white w3-card-4">
+    {% if current_user.has_role('admin')  %}
+    <a href="/customer" class="w3-bar-item w3-button">AddCustomer</a>
+    {% endif %}
+    <a href="/customers" class="w3-bar-item w3-button">Customers</a>
+  </div>
+
+  <div class="w3-bar-item w3-button" onclick="a()">
+  Rent Books <i class="fa fa-caret-down"></i></div>
+  <div id="b" class="w3-hide w3-white w3-card-4">
+    {% if current_user.has_role('admin')  %}
+  <a href="/rent" class="w3-bar-item w3-button">Rent Books</a>
+  {% endif %}
+    <a href="/rents" class="w3-bar-item w3-button">Rents</a>
+  </div>
+
+  <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+   {% else %}
+     <a href="/register" class="w3-bar-item w3-button">Register</a>
+  <a href="/login" class="w3-bar-item w3-button">Login</a>
+
+  {% endif %}
+</div>
+
+<!-- Page Content -->
+<div class="w3-pink">
+
+  <button class="w3-button w3-pink w3-xlarge" onclick="w3_open()">☰</button>
+  {% if current_user.is_authenticated %}
+   <a href="/profile" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Profile">
+    <img  class="w3-circle" src="{{url_for('static',filename='img/'+current_user.image)}}" style="height:23px;width:23px" alt="Avatar">
+  </a>
+  {% endif %}
+
+</div>
+<script>
+function w3_open() {
+   document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+function myAccFunc() {
+    var x = document.getElementById("demoAcc");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-green", "");
+    }
+}
+function x() {
+    var x = document.getElementById("y");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-green", "");
+    }
+}
+function a() {
+    var x = document.getElementById("b");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-green", "");
+    }
+}
+
+</script>
+
+<script src="../static/w3.js"></script>
+{% with messages=get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category,message in messages %}
+      <div class="alert alert-{{category}}">
+        {{message}}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    {% block content %}
+    {% endblock %}
+
+
+</body>
+</html>

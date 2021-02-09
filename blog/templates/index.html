@@ -1,0 +1,100 @@
+  {% extends 'layout.html' %}
+ {% block content %}
+
+<style type="text/css">
+  .x{
+    cursor: pointer;
+  }
+</style>
+
+
+  <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+    <br>
+    
+<a  href="/about">
+<span class="w3-tag w3-xlarge w3-padding w3-red">
+Be First For Being Success
+</span>
+</a>  
+ 
+
+
+<br>
+<br>
+<div class="w3-center " >
+  <div class="w3-dropdown-click" style="margin-left: 22px">
+    <button onclick="MyFunc()" class="w3-button  w3-indigo">Categories</button>
+    <div id="demo" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
+      {% for category in categories %}
+      <a href="{{url_for('get_category',id=category.id)}}" class="w3-bar-item w3-button">{{category.name}}</a>
+      {% endfor %}
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+ <div class="container x" id="pro">
+  
+<div class="row">
+ {% for book in books %}
+ 
+<div class="col-md-3 mt-3">
+	<div class="card" width="200">
+    
+		<div class="w3-display-topleft w3-black w3-padding">{{book.price}}AF</div>
+    
+		<img src="{{url_for('static',filename='img/'+book.image1)}}" alt="{{book.name}}"  height="250">
+    <a href="{{url_for('single_page',id=book.id)}}">
+    <h3 class="container w3-left" >{{book.name}}</h3>
+	  </a>
+  </div>
+</div>
+
+  {% endfor %}
+
+ </div>
+ </div>
+
+
+
+<div class="container x" id="pro">
+  
+<div class="row">
+ {% for c in category %}
+<div class="col-md-3 mt-3">
+  <div class="card" width="200">
+
+    <div class="w3-display-topleft w3-black w3-padding">{{c.price}}AF</div>
+    <img src="{{url_for('static',filename='img/'+c.image1)}}" alt="{{c.name}}"  height="250">
+    <a href="{{url_for('single_page',id=book.id)}}">
+<h3 class="container w3-left" >{{c.name}}</h3>
+</a>
+  </div>
+</div>
+  {% endfor %}
+
+ </div>
+ </div>
+
+
+
+</header>
+
+
+<script>
+function MyFunc() {
+    var x = document.getElementById("demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+{% endblock %}

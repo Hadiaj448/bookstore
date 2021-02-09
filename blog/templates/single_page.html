@@ -1,0 +1,33 @@
+ {% extends 'layout.html' %}
+ {% block content %}
+ <style type="text/css">
+ 	.mySlides{
+ 		max-height: 500px
+ 	}
+ </style>
+ <br>
+<div class="container ">
+  <div class="row">
+  <div class="col-md-6 ">
+   <img id="image1"  class="responsive mySlides"  src="{{url_for('static',filename='img/'+book.image1)}}" height="100%" width="100%">  
+ </div>
+
+<div class="col-md-6 w3-center" >
+<h2><b>{{book.name}}</b></h2>
+    <hr>
+    <h3>Price {{book.price}}AF</h3>
+    <h3>Pages {{book.page}}</h3>
+    <h3>Books In Book Store {{book.much}}</h3>
+    {% if book.jold > 0 %}
+    <h3>Book Jold {{book.jold}}</h3>
+    {% endif %}
+    <h4><b>{{book.desc}}</b></h4>
+   
+
+</div>
+
+
+
+</div>
+</div>
+{% endblock %}

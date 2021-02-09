@@ -1,0 +1,179 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br>
+
+  <div class="w3-card-4 w3-content">
+  <div class="w3-container w3-indigo">
+    <h2>UpdateCustomer</h2>
+  </div>
+
+<form action="" method="POST" enctype="multipart/form-data" class="w3-container">
+
+        {{form.hidden_tag()}}               
+        <div class="form-group">
+                  {{form.username.label(class="form-control-label")}}
+                  {% if form.username.errors %}
+                  {{form.username(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.username.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.username(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+
+                <div class="form-group">
+                  {{form.lastname.label(class="form-control-label")}}
+                  {% if form.lastname.errors %}
+                  {{form.lastname(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.lastname.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.lastname(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+
+              <div class="form-group">
+                  {{form.phone.label(class="form-control-label")}}
+                  {% if form.phone.errors %}
+                  {{form.phone(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.phone.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.phone(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+                <div class="form-group">
+                  {{form.add.label(class="form-control-label")}}
+                  {% if form.add.errors %}
+                  {{form.add(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.add.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.add(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div>
+                
+
+     <div class="form-group">
+                {{form.image1.label() }}
+                {{form.image1(class="form-control-file")}}
+                {% if form.image1.errors %}
+                
+                    {% for error in form.image1.errors %}
+                    <span class="text-danger">{{error}}</span>
+                    {% endfor %}
+                {% endif %}
+            </div> 
+
+
+                <div class="form-group">
+                  {{form.nic.label(class="form-control-label")}}
+                  {% if form.nic.errors %}
+                  {{form.nic(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.nic.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.nic(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+  
+              
+          
+  
+                <div class="form-group">
+                  {{form.hour.label(class="form-control-label")}}
+                  {% if form.hour.errors %}
+                  {{form.hour(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.hour.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.hour(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+               
+
+                        <div class="form-group">
+                  {{form.day.label(class="form-control-label")}}
+                  {% if form.day.errors %}
+                  {{form.day(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.day.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.day(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div>
+                       <div class="form-group">
+                  {{form.month.label(class="form-control-label")}}
+                  {% if form.month.errors %}
+                  {{form.month(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.month.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.month(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div>
+                       <div class="form-group">
+                  {{form.year.label(class="form-control-label")}}
+                  {% if form.year.errors %}
+                  {{form.year(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.year.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.year(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div>
+                       <div class="form-group">
+                  {{form.price.label(class="form-control-label")}}
+                  {% if form.price.errors %}
+                  {{form.price(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.price.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.price(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div>
+             
+             
+         
+
+            
+                  <div class="form-group">
+                      {{form.submit(class="btn btn-outline-primary w3-indigo")}}
+                  </div>
+     </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<br>
+
+ <style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial; 
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">{{current_user.username}} Profile </h2>
+
+<div class="card">
+  <img src="{{url_for('static',filename='img/'+current_user.image)}}" alt="John" style="width:100%">
+  <h1>{{current_user.username}}</h1>
+  <p class="title">{{current_user.email}}</p>
+ <p><a href="{{url_for('account')}}"><button class="w3-button w3-indigo" style="width: 100%">Edit</button></a></p>
+</div>
+
+</body>
+
+
+
+      
+{% endblock %}

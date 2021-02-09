@@ -1,0 +1,47 @@
+  {% extends 'layout.html' %}
+ {% block content %}
+
+<style>
+    .avatar {
+  vertical-align: middle;
+
+  border-radius: 50%;
+}
+</style>
+
+<br>
+<input oninput="w3.filterHTML('#id01', '.item', this.value)" placeholder="Search for names.." class="w3-input w3-border w3-animate-input w3-content" type="text" style="width:30%">
+<div class="w3-content">
+  <h2>All RentBooks</h2>
+  
+
+  <table class="w3-table-all" id="id01">
+    <thead>
+      <tr class="w3-indigo">
+        <th >Num</th>
+        <th>NIC</th>
+        <th>bookname</th>
+        <th>bookpage</th>
+        <th>Time</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    {% for rent in rents %}
+    <tr class="item">
+
+      <td >{{loop.index}}</td>
+      <td >{{rent.nic}}</td>
+      <td >{{rent.bookname}}</td>
+      <td >{{rent.bookpage}}</td>
+      <td>{{rent.date.year}}-{{rent.date.month}}-{{rent.date.day}}</td>
+      <td><a href="{{url_for('updaterent',id=rent.id)}}"><button  class="w3-button w3-green">Edit</button></a></td>
+      <td><a href="{{url_for('deleterent',id=rent.id)}}"><button class="w3-button w3-red">Delete</button></a></td>
+       {% if rent.date.year >= rent.year and rent.date.month >= rent.month and rent.date.day >= rent.day  %}
+        
+      {% endif %}
+    </tr>
+  {% endfor %}
+  </table>
+</div>
+{% endblock %}

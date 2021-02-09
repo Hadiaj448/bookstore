@@ -1,0 +1,33 @@
+
+
+
+
+
+
+{% extends 'layout.html' %}
+{% block content %}
+<br>
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+
+<div class="w3-card-4 w3-content">
+  <div class="w3-container w3-indigo ">
+<h2>Register To Baihaq</h2>
+  </div>
+  <br>
+<form action="{{ url_for_security('register') }}" method="POST" name="register_user_form" class="w3-container">
+  {{ register_user_form.hidden_tag() }}
+  {{ render_field_with_errors(register_user_form.username,class="w3-input w3-border w3-light-grey ") }}
+  {{ render_field_with_errors(register_user_form.email,class="w3-input w3-border w3-light-grey") }}
+  {{ render_field_with_errors(register_user_form.password,class="w3-input w3-border w3-light-grey") }}
+  {% if register_user_form.password_confirm %}
+    {{ render_field_with_errors(register_user_form.password_confirm,class="w3-input w3-border w3-light-grey") }}
+  {% endif %} 
+  <div class="form-group">              
+  {{ render_field(register_user_form.submit,class="w3-button w3-indigo") }}
+  </div>
+</form>
+</div>
+
+
+{% endblock %}
+             
